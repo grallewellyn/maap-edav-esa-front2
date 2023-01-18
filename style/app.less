@@ -1,0 +1,133 @@
+@import (css) url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap);
+
+@import '~antd/lib/style/themes/default.less';
+@import '~antd/dist/antd.less';
+@import './theme.less';
+
+@import '~@oidajs/ui-react-core/styles/index.less';
+@import '~@oidajs/ui-react-antd/styles/index.less';
+@import '~@oidajs/eo-mobx-react/styles/index.less';
+@import './components/index.less';
+
+@import '~@oidajs/ui-react-core/styles/utils/scrollbar';
+
+body {
+    background: white;
+    overflow: hidden;
+    margin: 0;
+
+    & * {
+        .scrollbar(8px, @primary-color, @primary-2);
+    }
+
+
+    .map-widget {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .app-layout {
+        position: absolute;
+        z-index: 1;
+        top: 0px;
+        width: 100%;
+        height: 100vh;
+        pointer-events: none;
+        overflow: hidden;
+
+        .dataset-layer-pane {
+            pointer-events: all;
+
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        .map-tools {
+            position: absolute;
+            top: 60px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            .aoi-draw-tool {
+                pointer-events: all;
+                margin-bottom: 10px;
+                flex-direction: row-reverse;
+
+                .aoi-draw-tool-current {
+                    padding-left: 10px;
+                }
+            }
+
+            .map-nav-tools {
+                pointer-events: all;
+            }
+        }
+
+        .layout-main {
+            display: flex;
+            flex-direction: column;
+
+            .app-top-bar {
+                align-self: flex-end;
+                margin-top: 10px;
+                margin-right: 10px;
+            }
+
+            .analysis-scrollable-overlay {
+
+                overflow: hidden;
+                margin-top: 50px;
+                padding-right: 40px;
+
+                .scrollable-overlay-content {
+
+                	min-height: 100%;
+
+
+                    .dashboard-pane {
+                        background: transparent;
+                        overflow: visible;
+
+                        .dashboard-widget {
+                            pointer-events: all;
+
+                        }
+
+                        .react-grid-placeholder {
+                            opacity: 0.3;
+                        }
+                    }
+                }
+            }
+        }
+
+        .layout-right {
+            justify-content: space-between;
+            align-items: flex-end;
+
+            .app-toolbar {
+                pointer-events: all;
+                margin-top: 10px;
+                margin-right: 10px;
+            }
+        }
+
+        .dataset-explorer-timeline {
+            pointer-events: all;
+        }
+    }
+
+    .ant-tooltip {
+        pointer-events: none;
+    }
+
+    .settings-drawer {
+        .app-info {
+            font-size: 13px;
+            color: @primary-color;
+        }
+    }
+
+}
