@@ -62,7 +62,6 @@ export const DatasetLayerPane = (props: DatasetLayerPaneProps) => {
                     explorerState={props.explorerState}
                     analyticsTools={analyticsTools}
                     datasetDownloadComponent={DatasetDownloadModal}
-                    disableDatasetRenaming={true}
                 />
             </React.Fragment>
         );

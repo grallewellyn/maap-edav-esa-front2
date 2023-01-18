@@ -1,6 +1,5 @@
 import {
-    DatasetAnalysis, DatasetAreaSeries, DatasetAreaValues, DatasetAreaValuesAnalysis, DatasetPointSeries,
-    DatasetPointSeriesAnalysis,
+    DatasetAnalysis, DatasetAreaSeries, DatasetAreaValues, DatasetPointSeries,
     DatasetToolConfig, DatasetTransectValues, DATASET_AREA_SERIES_PROCESSING,
     DATASET_AREA_VALUES_PROCESSING, POINT_SERIES_PROCESSING, TRANSECT_VALUES_PROCESSING
 } from '@oidajs/eo-mobx';
@@ -25,7 +24,8 @@ export const getAnalyticsTools = (datasetExplorer) => {
                         return tool.type === POINT_SERIES_PROCESSING;
                     }) as DatasetToolConfig<typeof POINT_SERIES_PROCESSING>;
 
-                    return new DatasetPointSeriesAnalysis({
+                    return new DatasetAnalysis<DatasetPointSeries>({
+                        type: POINT_SERIES_PROCESSING,
                         processings: [new DatasetPointSeries({
                             dataset: explorerItem.dataset,
                             config: pointSeriesTool.config,
@@ -44,7 +44,8 @@ export const getAnalyticsTools = (datasetExplorer) => {
                 const pointSeriesTool = dataset?.config.tools?.find((tool) => {
                     return tool.type === POINT_SERIES_PROCESSING;
                 }) as DatasetToolConfig<typeof POINT_SERIES_PROCESSING> | undefined;
-                return new DatasetPointSeriesAnalysis({
+                return new DatasetAnalysis<DatasetPointSeries>({
+                    type: POINT_SERIES_PROCESSING,
                     processings: pointSeriesTool ? [new DatasetPointSeries({
                         dataset: dataset!,
                         config: pointSeriesTool.config,
@@ -71,7 +72,7 @@ export const getAnalyticsTools = (datasetExplorer) => {
                         return tool.type === TRANSECT_VALUES_PROCESSING;
                     }) as DatasetToolConfig<typeof TRANSECT_VALUES_PROCESSING>;
 
-                    return new DatasetAnalysis<typeof TRANSECT_VALUES_PROCESSING, DatasetTransectValues>({
+                    return new DatasetAnalysis<DatasetTransectValues>({
                         type: TRANSECT_VALUES_PROCESSING,
                         processings: [new DatasetTransectValues({
                             dataset: explorerItem.dataset,
@@ -91,7 +92,7 @@ export const getAnalyticsTools = (datasetExplorer) => {
                 const transectValuesTool = dataset?.config.tools?.find((tool) => {
                     return tool.type === TRANSECT_VALUES_PROCESSING;
                 }) as DatasetToolConfig<typeof TRANSECT_VALUES_PROCESSING> | undefined;
-                return new DatasetAnalysis<typeof TRANSECT_VALUES_PROCESSING, DatasetTransectValues>({
+                return new DatasetAnalysis<DatasetTransectValues>({
                     type: TRANSECT_VALUES_PROCESSING,
                     processings: transectValuesTool ? [new DatasetTransectValues({
                         dataset: dataset!,
@@ -122,7 +123,8 @@ export const getAnalyticsTools = (datasetExplorer) => {
                         return tool.type === DATASET_AREA_VALUES_PROCESSING;
                     }) as DatasetToolConfig<typeof DATASET_AREA_VALUES_PROCESSING>;
 
-                    return new DatasetAreaValuesAnalysis({
+                    return new DatasetAnalysis<DatasetAreaValues>({
+                        type: DATASET_AREA_VALUES_PROCESSING,
                         processings: [new DatasetAreaValues({
                             dataset: explorerItem.dataset,
                             config: areaValuesTool.config,
@@ -142,7 +144,8 @@ export const getAnalyticsTools = (datasetExplorer) => {
                 const areaValuesTool = dataset?.config.tools?.find((tool) => {
                     return tool.type === DATASET_AREA_VALUES_PROCESSING;
                 }) as DatasetToolConfig<typeof DATASET_AREA_VALUES_PROCESSING> | undefined;
-                return new DatasetAreaValuesAnalysis({
+                return new DatasetAnalysis<DatasetAreaValues>({
+                    type: DATASET_AREA_VALUES_PROCESSING,
                     processings: areaValuesTool ? [new DatasetAreaValues({
                         dataset: dataset!,
                         config: areaValuesTool.config,
@@ -172,7 +175,7 @@ export const getAnalyticsTools = (datasetExplorer) => {
                         return tool.type === DATASET_AREA_SERIES_PROCESSING;
                     }) as DatasetToolConfig<typeof DATASET_AREA_SERIES_PROCESSING>;
 
-                    return new DatasetAnalysis<typeof DATASET_AREA_SERIES_PROCESSING, DatasetAreaSeries>({
+                    return new DatasetAnalysis<DatasetAreaSeries>({
                         type: DATASET_AREA_SERIES_PROCESSING,
                         processings: [new DatasetAreaSeries({
                             dataset: explorerItem.dataset,
@@ -193,7 +196,7 @@ export const getAnalyticsTools = (datasetExplorer) => {
                 const areaSeriesTool = dataset?.config.tools?.find((tool) => {
                     return tool.type === DATASET_AREA_SERIES_PROCESSING;
                 }) as DatasetToolConfig<typeof DATASET_AREA_SERIES_PROCESSING> | undefined;
-                return new DatasetAnalysis<typeof DATASET_AREA_SERIES_PROCESSING, DatasetAreaSeries>({
+                return new DatasetAnalysis<DatasetAreaSeries>({
                     type: DATASET_AREA_SERIES_PROCESSING,
                     processings: areaSeriesTool ? [new DatasetAreaSeries({
                         dataset: dataset!,
