@@ -59,7 +59,6 @@ export const App = (props: AppProps) => {
                                         height: 350
                                     }
                                 }}
-                                disableRenaming={true}
                             />
                         </ScrollableOverlay>
                         <MapTools explorerState={props.appState.datasetExplorer}/>
